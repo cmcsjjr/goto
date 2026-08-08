@@ -102,13 +102,14 @@ val openExternalFile =
                 scope.launch {
                     runCatching {
                         val fileObject = uri.toFileObject(expectedIsFile = true)
+                        //mainActivity.
+                        viewModel.unselectServiceTab()
 
                         mainActivity.viewModel.editorManager.openFile(
                             fileObject = fileObject,
                             projectRoot = null,
                             switchToTab = true,
                         )
-                        mainActivity.viewModel.unselectServiceTab()
                     }.onFailure { e ->
                         e.printStackTrace()
                         android.widget.Toast.makeText(
