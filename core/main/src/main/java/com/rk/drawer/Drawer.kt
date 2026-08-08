@@ -108,6 +108,7 @@ val openExternalFile =
                             projectRoot = null,
                             switchToTab = true,
                         )
+                        mainActivity.viewModel.unselectServiceTab()
                     }.onFailure { e ->
                         e.printStackTrace()
                         android.widget.Toast.makeText(
