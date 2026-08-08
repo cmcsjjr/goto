@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Environment
 import android.os.storage.StorageManager
 import androidx.activity.compose.ManagedActivityResultLauncher
+import androidx.activity.result.ActivityResult
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -47,12 +48,12 @@ fun AddProjectSheet(
     onDismiss: () -> Unit,
     onAddProject: (FileObject) -> Unit,
     openFolder: ManagedActivityResultLauncher<Uri?, Uri?>,
+    openExternalFile: ManagedActivityResultLauncher<Intent, ActivityResult>,
     showPrivateFileWarning: (onOK: () -> Unit) -> Unit,
 ) {
     val context = LocalContext.current
     val activity = context as MainActivity
     val lifecycleScope = remember { activity.lifecycleScope }
-
     val viewModel = activity.drawerViewModel
 
     ModalBottomSheet(
@@ -75,6 +76,21 @@ fun AddProjectSheet(
                 description = stringResource(strings.open_dir_desc),
                 onClick = {
                     openFolder.launch(null)
+                    onDismiss()
+                },
+            )
+
+            AddDialogItem(
+                icon = Icon.ResourceIcon(drawables.file),
+                title = "Open file (External App)",
+                description = "Pick a file using File Manager+ or external pickers",
+                onClick = {
+                    val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE)
+                        type = "*/*"
+                    }
+                    val chooser = Intent.createChooser(intent, "Select File")
+                    openExternalFile.launch(chooser)
                     onDismiss()
                 },
             )
@@ -204,7 +220,6 @@ fun AddProjectSheet(
                 }
             }
         }
-
     }
 }
 

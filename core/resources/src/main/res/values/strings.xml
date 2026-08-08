@@ -453,7 +453,7 @@
     <string name="extra_key_bg_desc">Show background for extra keys</string>
     <string name="actions">Actions</string>
     <string name="enjoying_xed">Enjoying Xed-Editor?</string>
-    <string name="support_message">You\'ve saved %s files and run code %s times with Xed. \n\nXed is an open-source, privacy-focused app built with the help of contributors from the community. If Xed has made your coding easier, would you consider supporting its development?\n\nYour support helps me:\n• Build features faster\n• Keep Xed ad-free forever\n• Respond to bugs quickly</string>
+    <string name="support_message">You\'ve saved %1$s files and run code %2$s times with Xed. \n\nXed is an open-source, privacy-focused app built with the help of contributors from the community. If Xed has made your coding easier, would you consider supporting its development?\n\nYour support helps me:\n• Build features faster\n• Keep Xed ad-free forever\n• Respond to bugs quickly</string>
     <string name="yes_support">Yes, I\'ll support! ❤️</string>
     <string name="not_for_me">No thanks</string>
     <string name="sponsor_desc">Become a sponsor and help shape the future of this project</string>
@@ -512,7 +512,7 @@
     <string name="icon_packs">Icon packs</string>
     <string name="add_icon_pack">Add icon pack</string>
     <string name="last_modified">Last modified</string>
-    <string name="content_property">%s items, totaling %s</string>
+    <string name="content_property">%1$s items, totaling %2$s</string>
     <string name="icon_pack_install_failed">Icon pack installation failed</string>
     <string name="manifest_missing_fields">The manifest.json file has missing or invalid properties:\n%s\n\nPlease check the file and try again.</string>
     <string name="manifest_missing">The manifest.json file is missing. Please add it and try again.</string>
