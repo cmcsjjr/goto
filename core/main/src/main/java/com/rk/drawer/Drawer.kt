@@ -102,15 +102,12 @@ val openExternalFile =
                 scope.launch {
                     runCatching {
                         val fileObject = uri.toFileObject(expectedIsFile = true)
-                        //mainActivity.
-                        viewModel.unselectServiceTab()
-
-                        mainActivity.viewModel.editorManager.openFile(
-                            fileObject = fileObject,
-                            projectRoot = null,
-                            switchToTab = true,
-                        )
-                    }.onFailure { e ->
+                        // 1. Unselect service tab inside drawer panel
+						viewModel.unselectServiceTab()
+						// 2. Open the file in the editor
+						mainActivity.viewModel.editorManager.openFile(		                                        fileObject = fileObject,						                                        projectRoot = null,						                                           		switchToTab = true,						                                            )
+						// 3. Close the drawer overlay to restore main editor view
+						com.rk.activities.main.ui.drawerStateRef.get()?.close()                     }.onFailure { e ->
                         e.printStackTrace()
                         android.widget.Toast.makeText(
                             context,
